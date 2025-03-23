@@ -14,5 +14,8 @@ promoting the DRY (Don't Repeat Yourself) principle
 
     <p> {{ post.body }} </p>
 
+{% empty %}
+    <p>No posts available.</p>
+
 {% endfor %}
 {% endblock content %}
