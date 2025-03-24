@@ -1,3 +1,4 @@
+{% load static %}
 <html>
 <head>
     <title> HaGa Live Studio </title>
@@ -5,8 +6,13 @@
 <body>
 <header>
     <h1>
-	<!--hypertext reference, relation -->
-	<a href = {% url 'home' %} rel = stylesheet> HaGa Django Blog </a>
+	<!-- hypertext reference, relation -->
+	<a href = {% url 'home' %}> HaGa Django Blog </a>
+	<!--
+	<link href='css/base.css'{% now "U" %} rel=stylesheet>
+	<link href={% static 'css/base.css' %} rel=stylesheet>
+	-->
+	<link rel="stylesheet" type="text/css" href='{% static '/css/base.css' %}?{% now "U" %}'>
     </h1> 
 </header>
 
