@@ -6,17 +6,17 @@ this is particularly useful for creating reusable and modular templates
 promoting the DRY (Don't Repeat Yourself) principle
 -->
 {% block content %}
-{% for post in object_list %}
+    {% for post in object_list %}
 
-    <h2>
-	<!--anchor hypertext reference-->
-	<a href = ''> {{ post.title }} </a>
-    </h2>
+	<h2>
+	    <!--anchor hypertext reference-->
+	    <a href = {% url 'post_detail' post.pk %}> {{ post.title }} </a>
+	</h2>
 
-    <p> {{ post.body }} </p>
+	<p> {{ post.body }} </p>
 
-{% empty %}
-    <p>No posts available.</p>
+    {% empty %}
+	<p>No posts available.</p>
 
-{% endfor %}
+    {% endfor %}
 {% endblock content %}

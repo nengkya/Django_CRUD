@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1> New post </h1>
+    <form action="" method="post">
+	{% csrf_token %} <!-- forbidden (403) csrf verification failed. Request aborted. -->
+	<!--
+	form.as_p is a method that renders each form field and its label wrapped in a <p> (paragraph) tag,
+	providing a simple and straightforward way to display form elements
+	-->
+	<input type=submit value=save>
+	{{ form.asp_p }}
+    </form>
+{% endblock content %}
