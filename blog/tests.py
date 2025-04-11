@@ -16,13 +16,21 @@ class BlogTests(TestCase):
         post = Post(title = 'A sample title')
         self.assertEqual(str(post), post.title)
 
+
     def test_post_content(self):
         self.assertEqual(f'{self.post.title}', 'KCIC')
+
 
     def test_post_list_view(self):
         response = self.client.get(reverse('home'))
         self.assertEqual(response.status_code, 200)
 
+
     def test_post_detail_view(self):
-        response = self.client.get('/post/1')
+        #response = self.client.get('/post/1')
+        #AssertionError: 301 != 200
+        response = self.client.get('/post/1/')
         self.assertEqual(response.status_code, 200)
+
+    def test_post_create_view(self):
+        response = self.client.post(reverse('post_new'), {'title' : 'Test new title', 'body' : 'New test body text', 'author' : self.user})
