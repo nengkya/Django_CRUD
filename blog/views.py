@@ -1,6 +1,7 @@
 from django.views.generic import ListView, DetailView
 from .models import Post
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 #create your views here
 class BlogListView(ListView):
@@ -21,4 +22,8 @@ class BlogUpdateView(UpdateView):
     template_name = 'post_edit.html'
     fields = ['title', 'body'] #using ModelFormMixin (base class of BlogUpdateView) without the 'fields' attribute is prohibited
 
-
+class BlogDeleteView(DeleteView):
+    model = Post
+    template_name = 'post_delete.html'
+    #succes_url no url to redirect to. provide a success_url
+    success_url = reverse_lazy('home')
