@@ -22,6 +22,14 @@
     </div>
 </header>
 
+{% if user.is_authenticated %}
+    <p> Hi {{ user.username }} ! </p>
+{% else %}
+    <p> You are not logged in ! </p>
+    <a href = {% url 'login' %}> Log In </a>
+<!-- unclosed tag on line 30: 'if'. Looking for one of: endif --> 
+{% endif%}
+
 <!-- insert home.html here-->
 {% block content %}
 
